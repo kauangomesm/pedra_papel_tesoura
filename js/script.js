@@ -58,6 +58,7 @@
             const div_escolhido = document.createElement(`div`)
             const img = document.createElement(`img`)
             div_escolhido.setAttribute(`class`, `escolhido`)
+            div_escolhido.classList.add(`vitoria`)
 
             div_escolhido.style.border = `15px solid #4E73F1`
             div_escolhido.style.boxShadow = `0px 6px #2642C6, inset 0px 5px #B5C5D3`
@@ -164,8 +165,30 @@
 
         const _maquinaEscolha = document.querySelector(`.mEscolha`).getAttribute(`ec`)
 
+        calcularVencedor(escolha, _maquinaEscolha)
         
-        console.log(`Sua escolha:${escolha} Escolha da maquina: ${_maquinaEscolha}`)
+        
     }
-    
+
+    function calcularVencedor(jogador, maquina){
+        let result = ``
+        if(jogador === maquina){
+            result = `e`
+        }else if(jogador === `pedra` && maquina === `tesoura` || jogador === `tesoura` && maquina === `papel` || jogador === `papel` && maquina === `pedra`){
+            result = `v`
+        }else if(maquina === `pedra` && jogador === `tesoura` || maquina === `tesoura` && jogador === `papel` || maquina === `papel` && jogador === `pedra`){
+            result = `d`
+        }
+
+        if(result === `e`){
+            // alert(`empate`)
+        }else if(result === `v`){
+                
+
+        }else if(result === `d`){
+            // alert(`derrota`)
+        }
+
+    }
+    //box-shadow: 0px 0px 0px 95px rgba(255, 255, 255, 0.141), 0px 0px 0px 45px rgba(255, 255, 255, 0.095), 0px 0px 0px 20px rgba(255, 255, 255, 0.06)
 })()
