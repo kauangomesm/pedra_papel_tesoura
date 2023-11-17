@@ -39,29 +39,27 @@
 
     <div class="game">
 
-      <div class="escolher">
-        <!-- <img src="images/bg-triangle.svg" alt="triangulo"> -->
+      <div class="escolher display_block">
 
-        <div class="escolha" id="papel"><img src="images/icon-paper.svg" alt="papel"></div>
+        <div class="escolha" id="papel" atr="papel"><img src="images/icon-paper.svg" atr="papel" alt="papel"></div>
 
-        <div class="escolha" id="pedra"><img src="images/icon-rock.svg" alt="pedra"></div>
+        <div class="escolha" id="pedra" atr="pedra"><img src="images/icon-rock.svg" atr="pedra" alt="pedra"></div>
         
-        <div class="escolha" id="tesoura"><img src="images/icon-scissors.svg" alt="tesoura"></div>
+        <div class="escolha" id="tesoura" atr="tesoura"><img src="images/icon-scissors.svg" atr="tesoura" alt="tesoura"></div>
 
 
       </div>
 
-      <div class="jogar">
+      <div class="jogar display_none">
 
         <div class="escolhas" id="sua_escolha">
 
           <p>Sua escolha</p>
 
-          <div class="escolhido"><img src="images/icon-paper.svg" alt=""></div>
-
+          
           </div>
 
-          <div id="result">
+          <div id="result" class="display_none">
             <p>VOCE GANHOU</p>
             <button>Jogar novamente</button>
           </div>
@@ -69,8 +67,8 @@
           <div class="escolhas" id="maquina_escolha">
 
             <p>Escoha da maquina</p>
-            <div class="escolhido"><img src="images/icon-paper.svg" alt=""></div> 
-            <div class="espera"></div>
+            
+            <div class="espera display_block"></div>
           </div>
 
         </div>
@@ -87,15 +85,15 @@
 
     </aside>
 
-    <div class="tampa">
+    <div class="tampa display_none"></div>
+
+    <div class="como_jogar display_none">
+
+      <div><p>Como Jogar</p><img class="fechar1" src="images/icon-close.svg" alt=""></div>
       
-    </div>
-
-    <div class="como_jogar">
-
-      <div><p>Como Jogar</p> <img src="images/icon-close.svg" alt=""></div>
 
       <img src="images/image-rules.svg" alt="">
+      <img class="fechar2" src="images/icon-close.svg" alt="">
     </div>
 
 
@@ -104,6 +102,6 @@
       Coded by <a href="#">Your Name Here</a>.
     </div>
   </main>
-
+  <script src="js/script.js"></script>
 </body>
 </html>
