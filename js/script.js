@@ -10,16 +10,22 @@
     const maquina_escolha = document.querySelector(`#maquina_escolha`)
     const espera = document.querySelector(`.espera`)
     const jogarNovamente = document.querySelector(`#result button`)
-    const score = document.querySelector(`.D_score`)
     const score_msg = document.querySelector(`.score`)
+    const d_msg = document.querySelector(`#result`)
+    const msg = document.querySelector(`#result p`)
+
+     score_msg.textContent = getScoreData()
+    console.log(score_msg)
+    function getScoreData(){
+        return parseInt(localStorage.getItem(`_score`)) || 0
+    }
+
+    function setnewScore(){
+        localStorage.setItem(`_score`, score_msg.textContent)
+    }
 
    
     escolher.addEventListener(`click`, fEscolher)
-
-
-
-
-
 
     como_jogar_button.addEventListener(`click`, () => {
         como_jogar.classList.remove(`display_none`)
@@ -107,8 +113,7 @@
             sua_escolha.append(div_escolhido)
         }
 
-        (function () {
-            
+        setTimeout(() => {
             espera.classList.remove(`display_block`)
             espera.classList.add(`display_none`)
             let maquinaEscolha = parseInt(Math.random() * 3)
@@ -167,12 +172,16 @@
                 maquina_escolha.append(div_escolhido)
                 
             }
-            
-        })()
 
-        const _maquinaEscolha = document.querySelector(`.mEscolha`).getAttribute(`ec`)
 
-        calcularVencedor(escolha, _maquinaEscolha)
+
+            const _maquinaEscolha = document.querySelector(`.mEscolha`).getAttribute(`ec`)
+
+            calcularVencedor(escolha, _maquinaEscolha)
+          }, "3000");
+          
+
+        
         
         
     }
@@ -180,8 +189,6 @@
     function calcularVencedor(jogador, maquina){
         if(jogador === maquina){
             //empate
-            const d_msg = document.querySelector(`#result`)
-            const msg = document.querySelector(`#result p`)
             msg.textContent = `Empate`
             d_msg.classList.remove(`display_none`)
             d_msg.classList.add(`display_flex`)
@@ -193,8 +200,6 @@
             //vitoria
         
             const _jogador = document.querySelector(`.jescolha`)
-            const d_msg = document.querySelector(`#result`)
-            const msg = document.querySelector(`#result p`)
             msg.textContent = `você ganhou`
             d_msg.classList.remove(`display_none`)
             d_msg.classList.add(`display_flex`)
@@ -202,15 +207,12 @@
             _jogador.style.boxShadow = `0px 0px 0px 95px rgba(255, 255, 255, 0.01), 0px 0px 0px 45px rgba(255, 255, 255, 0.04), ${_jogador.style.boxShadow}`
 
             score_msg.textContent = parseInt(score_msg.textContent) + 1
-
+            setnewScore()
         }
         
         else if(maquina === `pedra` && jogador === `tesoura` || maquina === `tesoura` && jogador === `papel` || maquina === `papel` && jogador === `pedra`){
             //derrota
-
             const _jogador = document.querySelector(`.mEscolha`)
-            const d_msg = document.querySelector(`#result`)
-            const msg = document.querySelector(`#result p`)
             msg.textContent = `você perdeu`
             d_msg.classList.remove(`display_none`)
             d_msg.classList.add(`display_block`)
@@ -218,9 +220,25 @@
 
         }
 
-        // jogarNovamente.addEventListener(`click`, (function () {
-            
-        // }))
+    }
+    jogarNovamente.addEventListener(`click`, reset)
 
+    function reset(){
+        const jogador = document.querySelector(`.jescolha`)
+        const mjogador = document.querySelector(`.mEscolha`)
+        sua_escolha.removeChild(jogador)
+        maquina_escolha.removeChild(mjogador)
+
+        escolher.classList.remove(`display_none`)
+        escolher.classList.add(`display_block`)
+
+        jogar.classList.remove(`display_flex`)
+        jogar.classList.add(`display_none`)
+
+        espera.classList.remove(`display_none`)
+        espera.classList.add(`display_block`)
+
+        d_msg.classList.remove(`display_flex`)
+        d_msg.classList.add(`display_none`)
     }
 })()

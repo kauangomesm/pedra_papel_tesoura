@@ -143,8 +143,8 @@ header{
 .escolhido{
     background-color: #ECECEC;
     box-shadow: 0px 6px #B5C5D3;
-    width: 150px;
-    height: 150px;
+    width: 145px;
+    height: 145px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -254,10 +254,13 @@ aside button{
 
     .escolhas{
         flex-direction: column-reverse;
+         width:fit-content;
+        padding: 10px;
     }
 
     .jogar{
         flex-wrap: wrap;
+        
     }
 
     #result{
@@ -301,3 +304,4 @@ aside button{
     }
     
 }
+
