@@ -9,6 +9,11 @@
     const sua_escolha = document.querySelector(`#sua_escolha`)
     const maquina_escolha = document.querySelector(`#maquina_escolha`)
     const espera = document.querySelector(`.espera`)
+    const jogarNovamente = document.querySelector(`#result button`)
+    const score = document.querySelector(`.D_score`)
+    const score_msg = document.querySelector(`.score`)
+
+   
     escolher.addEventListener(`click`, fEscolher)
 
 
@@ -57,12 +62,11 @@
         if(escolha === `papel`){
             const div_escolhido = document.createElement(`div`)
             const img = document.createElement(`img`)
-            div_escolhido.setAttribute(`class`, `escolhido`)
-            div_escolhido.classList.add(`vitoria`)
+            div_escolhido.classList.add(`escolhido`)
+            div_escolhido.classList.add(`jescolha`)
 
             div_escolhido.style.border = `15px solid #4E73F1`
             div_escolhido.style.boxShadow = `0px 6px #2642C6, inset 0px 5px #B5C5D3`
-            
             img.setAttribute(`src`, `images/icon-paper.svg`)
             img.setAttribute(`alt`, `papel`)
             div_escolhido.append(img)
@@ -73,7 +77,8 @@
         else if(escolha === `tesoura`){
             const div_escolhido = document.createElement(`div`)
             const img = document.createElement(`img`)
-            div_escolhido.setAttribute(`class`, `escolhido`)
+            div_escolhido.classList.add(`escolhido`)
+            div_escolhido.classList.add(`jescolha`)
 
             div_escolhido.style.border = `15px solid #E5A431`
             div_escolhido.style.boxShadow = `0px 6px #BF6B2A, inset 0px 5px #B5C5D3`
@@ -88,7 +93,9 @@
         else if(escolha === `pedra`){
             const div_escolhido = document.createElement(`div`)
             const img = document.createElement(`img`)
-            div_escolhido.setAttribute(`class`, `escolhido`)
+
+            div_escolhido.classList.add(`escolhido`)
+            div_escolhido.classList.add(`jescolha`)
 
             div_escolhido.style.border = `1rem solid #D94461`
             div_escolhido.style.boxShadow = `0px 6px #A71631, inset 0px 5px #B5C5D3`
@@ -171,24 +178,49 @@
     }
 
     function calcularVencedor(jogador, maquina){
-        let result = ``
         if(jogador === maquina){
-            result = `e`
-        }else if(jogador === `pedra` && maquina === `tesoura` || jogador === `tesoura` && maquina === `papel` || jogador === `papel` && maquina === `pedra`){
-            result = `v`
-        }else if(maquina === `pedra` && jogador === `tesoura` || maquina === `tesoura` && jogador === `papel` || maquina === `papel` && jogador === `pedra`){
-            result = `d`
+            //empate
+            const d_msg = document.querySelector(`#result`)
+            const msg = document.querySelector(`#result p`)
+            msg.textContent = `Empate`
+            d_msg.classList.remove(`display_none`)
+            d_msg.classList.add(`display_flex`)
+
+
+        }
+        
+        else if(jogador === `pedra` && maquina === `tesoura` || jogador === `tesoura` && maquina === `papel` || jogador === `papel` && maquina === `pedra`){
+            //vitoria
+        
+            const _jogador = document.querySelector(`.jescolha`)
+            const d_msg = document.querySelector(`#result`)
+            const msg = document.querySelector(`#result p`)
+            msg.textContent = `você ganhou`
+            d_msg.classList.remove(`display_none`)
+            d_msg.classList.add(`display_flex`)
+
+            _jogador.style.boxShadow = `0px 0px 0px 95px rgba(255, 255, 255, 0.01), 0px 0px 0px 45px rgba(255, 255, 255, 0.04), ${_jogador.style.boxShadow}`
+
+            score_msg.textContent = parseInt(score_msg.textContent) + 1
+
+        }
+        
+        else if(maquina === `pedra` && jogador === `tesoura` || maquina === `tesoura` && jogador === `papel` || maquina === `papel` && jogador === `pedra`){
+            //derrota
+
+            const _jogador = document.querySelector(`.mEscolha`)
+            const d_msg = document.querySelector(`#result`)
+            const msg = document.querySelector(`#result p`)
+            msg.textContent = `você perdeu`
+            d_msg.classList.remove(`display_none`)
+            d_msg.classList.add(`display_block`)
+            _jogador.style.boxShadow = `0px 0px 0px 95px rgba(255, 255, 255, 0.01), 0px 0px 0px 45px rgba(255, 255, 255, 0.04), ${_jogador.style.boxShadow}`
+
         }
 
-        if(result === `e`){
-            // alert(`empate`)
-        }else if(result === `v`){
-                
-
-        }else if(result === `d`){
-            // alert(`derrota`)
-        }
+        // jogarNovamente.addEventListener(`click`, (function () {
+            
+        // }))
 
     }
-    //box-shadow: 0px 0px 0px 95px rgba(255, 255, 255, 0.141), 0px 0px 0px 45px rgba(255, 255, 255, 0.095), 0px 0px 0px 20px rgba(255, 255, 255, 0.06)
 })()

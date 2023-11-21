@@ -129,6 +129,7 @@ header{
     height: 200px;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 .escolhas{
@@ -159,13 +160,15 @@ header{
 }
 
 #result{
-    width: 20%;
-    height: 200px;
+    padding: 20px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
+    text-align: center;
+    
 }
+
 
 #result button{
     color: black;
@@ -242,10 +245,6 @@ aside button{
 .display_flex{display: flex;}
 
 
-.vitoria{
-    
-}
-
 
 @media (max-width: 450px) {
 
@@ -255,6 +254,14 @@ aside button{
 
     .escolhas{
         flex-direction: column-reverse;
+    }
+
+    .jogar{
+        flex-wrap: wrap;
+    }
+
+    #result{
+        order: 3;
     }
 
     .como_jogar{
