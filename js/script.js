@@ -213,9 +213,12 @@
         else if(maquina === `pedra` && jogador === `tesoura` || maquina === `tesoura` && jogador === `papel` || maquina === `papel` && jogador === `pedra`){
             //derrota
             const _jogador = document.querySelector(`.mEscolha`)
+
             msg.textContent = `você perdeu`
+
             d_msg.classList.remove(`display_none`)
-            d_msg.classList.add(`display_block`)
+            d_msg.classList.add(`display_flex`)
+
             _jogador.style.boxShadow = `0px 0px 0px 95px rgba(255, 255, 255, 0.01), 0px 0px 0px 45px rgba(255, 255, 255, 0.04), ${_jogador.style.boxShadow}`
 
         }
