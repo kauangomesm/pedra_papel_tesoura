@@ -178,12 +178,8 @@
             const _maquinaEscolha = document.querySelector(`.mEscolha`).getAttribute(`ec`)
 
             calcularVencedor(escolha, _maquinaEscolha)
-          }, "3000");
+          }, `${parseInt(Math.random() * 5)}000`);
           
-
-        
-        
-        
     }
 
     function calcularVencedor(jogador, maquina){
